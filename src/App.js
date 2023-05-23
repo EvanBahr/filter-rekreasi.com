@@ -1,15 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { handleQueryingUrl } from "./utils";
 
 function App() {
   const [dataTampil, setDataTampil] = useState([]);
-  const [pencarian, setPencarian] = useState("Jalan Jalan ke Kota Jakarta");
-  // const [golek, setGolek] = useState({});
-
-  // console.log("query", handleQueryingUrl(golek));
 
   const ambilData = (filters) => {
     axios
@@ -21,13 +17,6 @@ function App() {
         setDataTampil(res.data.data);
         // console.log("data tampil", dataTampil[0]);
       });
-  };
-  const cari = (e) => {
-    if (e.key === "Enter" || e.target.value > 0) {
-      ambilData();
-    } else {
-      setDataTampil([]);
-    }
   };
 
   const handleSubmit = (e) => {
@@ -59,10 +48,7 @@ function App() {
           <div className="text-left font-bold ml-4 text-xl mb-1">title:</div>
           <input
             name="title"
-            // onChange={(e) => console.log(e.target.value)}
             className="w-full bg-blue-200 px-5 py-6 font-mono font-semibold text-2xl  h-12 rounded-2xl"
-            // onChange={setCAri}
-            // onKeyDown={cari}
           />{" "}
           <div className="text-left font-bold ml-4 text-xl mb-1">
             minCostim:
@@ -71,16 +57,12 @@ function App() {
             name="minCost"
             type="number"
             className="w-full bg-blue-200 px-5 py-6 font-mono font-semibold text-2xl  h-12 rounded-2xl"
-            // onChange={setCAri}
-            // onKeyDown={cari}
           />{" "}
           <div className="text-left font-bold ml-4 text-xl mb-1">maxCost:</div>
           <input
             name="maxCost"
             type="number"
             className="w-full bg-blue-200 px-5 py-6 font-mono font-semibold text-2xl  h-12 rounded-2xl"
-            // onChange={setCAri}
-            // onKeyDown={cari}
           />
           <button>testse</button>
         </form>
